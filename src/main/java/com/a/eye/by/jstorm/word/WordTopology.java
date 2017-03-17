@@ -17,6 +17,8 @@ public class WordTopology {
         builder.setBolt("count_bolt_id", new WordCount(), 1).shuffleGrouping("spilt_bolt_id");
 
         Config conf = new Config();
+        
+        conf.put(Config.TOPOLOGY_MAX_TASK_PARALLELISM, 1);
 
         LocalCluster cluster = new LocalCluster();
 
